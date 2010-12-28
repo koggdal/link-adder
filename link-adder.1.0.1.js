@@ -11,7 +11,7 @@
 	/* Setup the link adder */
 	var settings = {
 		id: 'link-adder',
-		plugin_folder: 'http://koggdal.com/wp/wp-content/plugins/link-adder/',
+		plugin_folder: '',
 		hash: ''
 	};
 	
