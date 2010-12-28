@@ -26,15 +26,16 @@ function link_adder_settings()
 		
 	$code = file_get_contents(WP_PLUGIN_URL."/link-adder/link-adder.min.js");
 	$code = str_replace("%SITENAME%",get_bloginfo('name'),$code);
-	$code = htmlentities($code);
 	$code = preg_replace("/\/\*.*?\*\/\n/s","javascript:",$code);
-	$code = preg_replace("/plugin_folder:'.*?'/","plugin_folder:'".WP_PLUGIN_URL."/link-adder/'",$code);
+	$code = str_replace('"',"'",$code);
+	$code = str_replace("plugin_folder:''","plugin_folder:'".WP_PLUGIN_URL."/link-adder/'",$code);
 	$code = str_replace("hash:''","hash:'".get_option('link-adder-id')."'",$code);
+	$code = htmlentities($code);
 	
 	$code_full = file_get_contents(WP_PLUGIN_URL."/link-adder/link-adder.js");
 	$code_full = str_replace("%SITENAME%",get_bloginfo('name'),$code_full);
 	$code_full = htmlentities($code_full);
-	$code_full = preg_replace("/plugin_folder: '.*?'/","plugin_folder: '".WP_PLUGIN_URL."/link-adder/'",$code_full);
+	$code_full = preg_replace("/plugin_folder: ['\"].*?['\"]/","plugin_folder: '".WP_PLUGIN_URL."/link-adder/'",$code_full);
 	$code_full = str_replace("hash: ''","hash: '".get_option('link-adder-id')."'",$code_full);
 	$code_full_rows = split("\n",$code_full);
 	$code_full_num_rows = count($code_full_rows);
