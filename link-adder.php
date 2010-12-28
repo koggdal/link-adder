@@ -3,7 +3,7 @@
 Plugin Name: Link Adder
 Plugin URI: http://koggdal.com/extras/link-adder/
 Description: Creates a bookmarklet that adds the website the user is currently on as a link in your WordPress install
-Version: 1.0
+Version: 1.0.1
 Author: Johannes Koggdal
 Author URI: http://koggdal.com/
 License: GPL2
@@ -24,7 +24,7 @@ function link_adder_settings()
 	if (!current_user_can('manage_options'))
 		wp_die( __('You do not have sufficient permissions to access this page.') );
 		
-	$code = file_get_contents(WP_PLUGIN_URL."/link-adder/link-adder.1.0.min.js");
+	$code = file_get_contents(WP_PLUGIN_URL."/link-adder/link-adder.1.0.1.min.js");
 	$code = str_replace("%SITENAME%",get_bloginfo('name'),$code);
 	$code = htmlentities($code);
 	$code = preg_replace("/\/\*.*?\*\/\n/s","javascript:",$code);
