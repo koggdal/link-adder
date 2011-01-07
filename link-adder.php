@@ -6,7 +6,7 @@ Description: Creates a bookmarklet that adds the website the user is currently o
 Version: 1.0.1
 Author: Johannes Koggdal
 Author URI: http://koggdal.com/
-License: GPL2
+License: MIT
 */
 
 add_action('admin_menu', 'link_adder_menu');
